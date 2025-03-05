@@ -22,10 +22,20 @@
             position: absolute;
             bottom: 50px;
         }
+        #birthdayBg {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
         .bubble {
             display: none;
             position: absolute;
-            bottom: 220px;
+            bottom: 240px;
             background: white;
             border: 3px solid black;
             padding: 10px;
@@ -39,7 +49,7 @@
             content: '';
             position: absolute;
             bottom: -10px;
-            left: 20px;
+            left: 25px;
             width: 0;
             height: 0;
             border-left: 10px solid transparent;
@@ -57,6 +67,7 @@
     </style>
 </head>
 <body onclick="handleClick()">
+    <img id="birthdayBg" src="birthday_background.png" alt="Birthday Background">
     <img id="cat" src="cat_with_hat.png" alt="Birthday Cat">
     <div class="bubble" id="bubble">Happy Birthday, Marina!</div>
     <script>
@@ -66,8 +77,7 @@
                 document.getElementById('cat').style.display = 'block';
             } else if (clickCount === 1) {
                 document.getElementById('bubble').style.display = 'block';
-                document.body.style.backgroundImage = "url('birthday_background.png')";
-                document.body.style.backgroundSize = "cover";
+                document.getElementById('birthdayBg').style.display = 'block';
                 launchConfetti();
             }
             clickCount++;
