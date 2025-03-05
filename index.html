@@ -32,6 +32,12 @@
             object-fit: cover;
             z-index: -1;
         }
+        #cake {
+            display: none;
+            width: 150px;
+            position: absolute;
+            bottom: 100px;
+        }
         .bubble {
             display: none;
             position: absolute;
@@ -69,6 +75,7 @@
 <body onclick="handleClick()">
     <img id="birthdayBg" src="birthday_background.png" alt="Birthday Background">
     <img id="cat" src="cat_with_hat.png" alt="Birthday Cat">
+    <img id="cake" src="birthday_cake.gif" alt="Birthday Cake">
     <div class="bubble" id="bubble">Happy Birthday, Marina!</div>
     <script>
         let clickCount = 0;
@@ -78,6 +85,7 @@
             } else if (clickCount === 1) {
                 document.getElementById('bubble').style.display = 'block';
                 document.getElementById('birthdayBg').style.display = 'block';
+                document.getElementById('cake').style.display = 'block';
                 launchConfetti();
             }
             clickCount++;
@@ -96,10 +104,10 @@
                     { transform: `translateY(0px) rotate(${Math.random() * 360}deg)`, opacity: 1 },
                     { transform: `translateY(600px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
                 ], {
-                    duration: 8000 + Math.random() * 1000,
+                    duration: 13000 + Math.random() * 1000,
                     easing: 'ease-out'
                 });
-                setTimeout(() => confetti.remove(), 9000);
+                setTimeout(() => confetti.remove(), 14000);
             }
         }
     </script>
