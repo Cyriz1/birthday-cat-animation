@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Cat</title>
+    <style>
+        body {
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+        #cat {
+            display: none;
+            width: 200px;
+            position: absolute;
+            bottom: 50px;
+        }
+        .bubble {
+            display: none;
+            position: absolute;
+            bottom: 180px;
+            background: white;
+            border: 3px solid black;
+            padding: 10px;
+            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            opacity: 0.8;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body onclick="handleClick()">
+    <img id="cat" src="cat_with_hat.png" alt="Birthday Cat">
+    <div class="bubble" id="bubble">Happy Birthday, Marina!</div>
+    <script>
+        let clickCount = 0;
+        function handleClick() {
+            if (clickCount === 0) {
+                document.getElementById('cat').style.display = 'block';
+            } else if (clickCount === 1) {
+                document.getElementById('bubble').style.display = 'block';
+                launchConfetti();
+            }
+            clickCount++;
+        }
+
+        function launchConfetti() {
+            for (let i = 0; i < 50; i++) {
+                let confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                document.body.appendChild(confetti);
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.top = Math.random() * window.innerHeight + 'px';
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.animate([
+                    { transform: `translateY(0px)`, opacity: 1 },
+                    { transform: `translateY(500px)`, opacity: 0 }
+                ], {
+                    duration: 2000 + Math.random() * 1000,
+                    easing: 'ease-out'
+                });
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+    </script>
+</body>
+</html>
